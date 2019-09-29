@@ -1,5 +1,4 @@
 import { LinkQueue } from '../Queue/LinkQueue'
-import {Stack} from "../Stack/Stack";
 
 test('Queue enqueing should add element', () =>{
     const queue = new LinkQueue()
