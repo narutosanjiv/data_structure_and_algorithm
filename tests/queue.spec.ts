@@ -9,7 +9,8 @@ test('Queue enqueing should add element', () =>{
 test('Queue enqueing should add element', () =>{
     const queue = new LinkQueue()
     queue.enqeueue("test")
+    queue.enqeueue("test2")
     let data = queue.dequeue()
-    expect(data).toBe(data)
-    expect(queue.isEmpty()).toBe(true)
+    expect(data).toBe("test")
+    expect(queue.isEmpty()).toBe(false)
 })
