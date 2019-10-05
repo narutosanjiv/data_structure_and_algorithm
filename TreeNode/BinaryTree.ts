@@ -1,18 +1,18 @@
 import { LinkQueue } from '../Queue/LinkQueue'
 
-interface BinaryTreeNode<T> {
-    val: T | undefined | null
+interface BinaryTreeNode<V> {
+    val: V | undefined | null
     left: this | null
     right: this | null
 }
 
-class BinaryTree<T> {
+export class BinaryTree<T> {
     root: BinaryTreeNode<T>
     constructor(root){
         this.root = root
     }
 
-    createBinaryNode(val): BinaryTreeNode<number>{
+    static createBinaryNode(val): BinaryTreeNode<number>{
         let node:BinaryTreeNode<number> =  {
             val,
             left: null,
@@ -21,13 +21,13 @@ class BinaryTree<T> {
         return node
     }
 
-    contructFromArray(arr: Array<number>): BinaryTree<number> | null {
+    static contructFromArray(arr: Array<number>): BinaryTree<number> | null {
         if(arr.length ==0)
             return null
 
         let binary_tree = new BinaryTree<number>(this.createBinaryNode(arr[0]));
         const queue = new LinkQueue<BinaryTreeNode<number>>()
-        queue.enqeueue(this.root)
+        queue.enqeueue(binary_tree.root)
         let i = 1
 
         while(i < arr.length){
@@ -49,13 +49,17 @@ class BinaryTree<T> {
         return binary_tree
     }
 
-    inOrderTraversal(){
+    static inOrderTraversal(head, data: Array<number>){
+        if(head == null)
+            return
+        this.inOrderTraversal(head.left, data)
+        data.push(head.val)
+        this.inOrderTraversal(head.right, data)
+    }
+    static preOrderTraversal(){
 
     }
-    preOrderTraversal(){
-
-    }
-    postOrderTraversal(){
+    static postOrderTraversal(){
 
     }
 }
